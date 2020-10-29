@@ -45,4 +45,15 @@ public class HistogramDisplay extends ApplicationFrame{
     public void execute(){
             this.setVisible(true);
     }
+
+    @Override
+    public final void setContentPane(Container contentPane) {
+        super.setContentPane(contentPane);
+    }
+
+    @Override
+    public final void pack() {
+        super.pack();
+    }
+    
 }
