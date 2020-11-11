@@ -27,9 +27,21 @@ public class Kata3 {
                                         "amazon.co.uk","ulpgc.es","hotmail.com", "gobcan.es" };
         
         Arrays.stream(entries).forEach(key-> histogram.increment(key));
-        HistogramDisplay histogramDisplay = new HistogramDisplay("tururu",histogram);
-        
+        HistogramDisplay histogramDisplay = new HistogramDisplay("String Histogram",histogram);
         histogramDisplay.execute();
+        
+        
+        Histogram<Boolean> booleanHistogram = new Histogram();
+        Boolean[] booleanEntries = new Boolean[]{ true, false,
+                                                true, false,
+                                                true, false,
+                                                true};
+        Arrays.stream(booleanEntries).forEach(key-> booleanHistogram.increment(key));
+        
+        HistogramDisplay booleanHistogramDisplay = new HistogramDisplay("Boolean Histogram",booleanHistogram);
+       
+        booleanHistogramDisplay.execute();
+        
     }
     
 }
