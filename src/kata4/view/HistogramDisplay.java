@@ -1,7 +1,8 @@
-package kata4;
+package kata4.view;
 
 import java.awt.Container;
 import javax.swing.JPanel;
+import kata4.model.Histogram;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -9,7 +10,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-public class HistogramDisplay<T extends Object> extends ApplicationFrame{
+public class HistogramDisplay<T> extends ApplicationFrame{
 
     private final Histogram<T> histogram;
     

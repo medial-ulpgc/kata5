@@ -1,4 +1,4 @@
-package kata4;
+package kata4.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ public class Histogram<T> {
     private final Map<T,Integer> map;
 
     public Histogram() {
-        this.map = new HashMap();
+        this.map = new HashMap<>();
     }
     public Integer get(T key){
         return map.get(key);
