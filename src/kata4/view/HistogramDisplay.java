@@ -2,6 +2,7 @@ package kata4.view;
 
 import java.awt.Container;
 import java.util.Comparator;
+import java.util.Map;
 import javax.swing.JPanel;
 import kata4.model.Histogram;
 import org.jfree.chart.ChartFactory;
@@ -40,32 +41,13 @@ public class HistogramDisplay<T> extends ApplicationFrame{
     private DefaultCategoryDataset createDataset(){
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
         
-        histogram.keySet()
+        histogram.entrySet()
                 .stream()
-                .map( key-> new Pair(key, histogram.get(key)))
-                .sorted(Comparator.comparing(Pair::getValue).reversed())
-                .forEach((pair)->dataSet.addValue(pair.getValue(), "",pair.getKey().toString()));
+                .sorted(Comparator.comparing(Map.Entry<T,Integer>::getValue).reversed())
+                .forEach((entry)->dataSet.addValue(entry.getValue(), "",entry.getKey().toString()));
         return dataSet;
     }
-    private class Pair{
 
-        private final T key;
-        private final int value;
-
-        public Pair(T key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-        public T getKey() {
-            return key;
-        }
-        public int getValue() {
-            return value;
-        }
-
-        
-    
-    }
     public void execute(){
             this.setVisible(true);
     }

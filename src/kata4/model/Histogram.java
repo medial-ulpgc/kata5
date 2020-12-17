@@ -19,6 +19,12 @@ public class Histogram<T> {
     public void increment(T key){
         map.put(key, map.getOrDefault(key,0)+1);
     }
+
+    public Set<Map.Entry<T, Integer>> entrySet() {
+        return map.entrySet();
+    }
+    
+    
     
     
 }
