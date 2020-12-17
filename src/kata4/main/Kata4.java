@@ -1,6 +1,5 @@
 package kata4.main;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 import kata4.model.Histogram;
 import kata4.model.Mail;

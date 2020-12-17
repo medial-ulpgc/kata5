@@ -1,6 +1,7 @@
 package kata4.view;
 
 import java.awt.Container;
+import java.util.Comparator;
 import javax.swing.JPanel;
 import kata4.model.Histogram;
 import org.jfree.chart.ChartFactory;
@@ -38,15 +39,37 @@ public class HistogramDisplay<T> extends ApplicationFrame{
     }
     private DefaultCategoryDataset createDataset(){
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+        
         histogram.keySet()
                 .stream()
-                .forEachOrdered((key)->dataSet.addValue(histogram.get(key), "",key.toString()));
+                .map( key-> new Pair(key, histogram.get(key)))
+                .sorted(Comparator.comparing(Pair::getValue).reversed())
+                .forEach((pair)->dataSet.addValue(pair.getValue(), "",pair.getKey().toString()));
         return dataSet;
+    }
+    private class Pair{
+
+        private final T key;
+        private final int value;
+
+        public Pair(T key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+        public T getKey() {
+            return key;
+        }
+        public int getValue() {
+            return value;
+        }
+
+        
+    
     }
     public void execute(){
             this.setVisible(true);
     }
-
+    
     @Override
     public final void setContentPane(Container contentPane) {
         super.setContentPane(contentPane);
